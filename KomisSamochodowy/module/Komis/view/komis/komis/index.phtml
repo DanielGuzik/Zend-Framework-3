@@ -1,0 +1,31 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$model = 'Komis samochodowy';
+$this->headTitle($model);
+?>
+<h1><?= $this->escapeHtml($model) ?></h1>
+<p>
+    <a href="<?= $this->url('komis', ['action' => 'add']) ?>">Dodaj Samochód</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Marka</th>
+    <th>Model</th>
+    <th>Rok</th>
+    <th>Akcja</th>
+</tr>
+<?php foreach ($komiss as $komis) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($komis->marka) ?></td>
+        <td><?= $this->escapeHtml($komis->model) ?></td>
+        <td><?= $this->escapeHtml($komis->year) ?></td>
+        <td>
+            <a href="<?= $this->url('komis', ['action' => 'view', 'id' => $komis->id]) ?>">Zobacz</a> 
+            <a href="<?= $this->url('komis', ['action' => 'edit', 'id' => $komis->id]) ?>">Edytuj</a>
+            <a href="<?= $this->url('komis', ['action' => 'delete', 'id' => $komis->id]) ?>">Usuń</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

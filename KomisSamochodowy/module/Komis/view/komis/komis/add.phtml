@@ -1,0 +1,77 @@
+<?php
+
+$model = 'Dodaj pojazd';
+$this->headTitle($model);
+?>
+<h1>Dodaj nowy samochód</h1>
+<?php
+// This provides a default CSS class and placeholder text for the model element:
+$komis = $form->get('model');
+$komis->setAttribute('class', 'form-control');
+$komis->setAttribute('placeholder', 'Model');
+
+// This provides a default CSS class and placeholder text for the marka element:
+$marka = $form->get('marka');
+$marka->setAttribute('class', 'form-control');
+$marka->setAttribute('placeholder', 'Marka');
+
+// This provides a default CSS class and placeholder text for the marka element:
+$img = $form->get('img');
+$img->setAttribute('class', 'form-control');
+$img->setAttribute('placeholder', 'Img URL');
+
+// This provides a default CSS class and placeholder text for the marka element:
+$year = $form->get('year');
+$year->setAttribute('class', 'form-control');
+$year->setAttribute('placeholder', 'Rok produkcji');
+
+// This provides a default CSS class and placeholder text for the marka element:
+$desc = $form->get('desc');
+$desc->setAttribute('class', 'form-control');
+$desc->setAttribute('placeholder', 'Opis');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('komis', ['action' => 'Add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+<div class="form-group">
+    <?= $this->formLabel($marka) ?>
+    <?= $this->formElement($marka) ?>
+    <?= $this->formElementErrors()->render($marka, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($komis) ?>
+    <?= $this->formElement($komis) ?>
+    <?= $this->formElementErrors()->render($komis, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($img) ?>
+    <?= $this->formElement($img) ?>
+    <?= $this->formElementErrors()->render($img, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($year) ?>
+    <?= $this->formElement($year) ?>
+    <?= $this->formElementErrors()->render($year, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($desc) ?>
+    <?= $this->formElement($desc) ?>
+    <?= $this->formElementErrors()->render($desc, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

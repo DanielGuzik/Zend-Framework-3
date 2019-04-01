@@ -1,0 +1,26 @@
+<?php
+
+$model = $this->escapeHtml($komis->marka).' '.$this->escapeHtml($komis->model) ;
+$url   = $this->url('komis', ['action' => 'view', 'id' => $id]);
+
+$this->headTitle($model);
+?>
+<h1><?= $this->escapeHtml($komis->marka).' '.$this->escapeHtml($komis->model) ?></h1>
+
+<p><b>Marka pojazdu:</b> <?= $this->escapeHtml($komis->marka) ?></p>
+<p><b>Model pojazdu:</b> <?= $this->escapeHtml($komis->model) ?></p>
+<p><b>Rok pojazdu:</b> <?= $this->escapeHtml($komis->year) ?></p>
+<p><b>Opis pojazdu:</b> <?= $this->escapeHtml($komis->desc) ?></p>
+
+<p><img src="<?= $this->escapeHtml($komis->img) ?>"></p>
+  
+
+<form action="<?= $url ?>" method="post">
+	<div class="form-group">
+		<a href="<?= $this->url('komis', ['action' => 'edit', 'id' => $komis->id]) ?>">Edytuj</a>
+		<a href="<?= $this->url('komis', ['action' => 'delete', 'id' => $komis->id]) ?>">Usuń</a>
+	</div>
+	<div>
+		<a href="<?= $this->url('komis', ['action' => 'index', 'id' => $komis->id]) ?>">Wróc</a>
+	</div>
+</form>
